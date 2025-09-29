@@ -1,317 +1,313 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Космос Кода — Профессиональный курс веб-разработки</title>
-  <meta name="description" content="Профессиональный 8-недельный курс по веб-разработке: HTML, CSS, JavaScript, Git, деплой. Личный ментор, поддержка, финальный проект и сертификат." />
-  <meta name="color-scheme" content="dark light" />
-  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Сайт-визитка за 1 день — Виталий Матвиенко</title>
+  <meta name="description" content="Сделаю сайт-визитку за 1 день: кибер-дизайн, адаптив, форма с отправкой в Telegram. Публикация на GitHub Pages/Netlify."/>
   <style>
     :root{
-      --bg:#0b1020; --card: rgba(255,255,255,.06); --line: rgba(255,255,255,.08);
-      --text:#e7ecff; --muted:#9fb2e3; --brand:#6ae0ff; --accent:#8af5c2;
-      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35);
-      --space-xs:8px; --space-s:12px; --space-m:16px; --space-l:24px; --space-xl:40px;
-      --container:1200px;
+      --bg:#0b1020;--bg2:#0f1730;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);
+      --text:#e7ecff;--muted:#a7b6e6;--brand:#6ae0ff;--accent:#8af5c2;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35)
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    html,body{margin:0;padding:0}
-    body{font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial;
-      background: radial-gradient(1200px 700px at 70% -10%, rgba(106,224,255,.08), transparent 60%), var(--bg);
-      color:var(--text); line-height:1.55}
-    a{color:var(--brand); text-decoration:none}
-    img{max-width:100%; display:block; height:auto}
-    .container{max-width:var(--container); margin:0 auto; padding:0 var(--space-m)}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      background:radial-gradient(1200px 700px at 70% -10%,rgba(106,224,255,.08),transparent 60%),var(--bg);
+      color:var(--text);line-height:1.55;overflow-x:hidden}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    a{color:var(--brand);text-decoration:none}
+    h1{font-size:clamp(34px,6vw,56px);line-height:1.08;margin:8px 0}
+    h2{font-size:clamp(22px,4vw,32px);margin:0 0 10px}
+    p{margin:0}
 
-    /* Header */
-    header{position:sticky; top:0; z-index:40; background:rgba(11,16,32,.7); backdrop-filter: blur(10px); border-bottom:1px solid var(--line)}
-    .bar{display:flex; align-items:center; gap:12px; justify-content:space-between; min-height:56px; padding: var(--space-s) 0}
-    .logo{display:flex; align-items:center; gap:10px; font-weight:800}
-    .logo-dot{width:12px; height:12px; border-radius:50%; background:conic-gradient(from 180deg,#6ae0ff,#8af5c2,#6ae0ff)}
-    .menu-btn{display:none; background:transparent; border:1px solid var(--line); border-radius:10px; padding:8px 10px; color:#fff}
-    .nav{display:flex; align-items:center}
-    .nav a{margin:0 var(--space-s); opacity:.95; font-weight:700}
+    #stars,#fx{position:fixed;inset:0;z-index:-1;pointer-events:none}
 
-    /* Cosmic buttons */
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; font-weight:800; color:#0b1020; box-shadow: var(--shadow);
-      background: linear-gradient(135deg, #6ae0ff 0%, #8af5c2 50%, #6ae0ff 100%); background-size:200% 200%;
-      transition: transform .08s ease, box-shadow .2s ease, background-position .4s ease}
-    .btn:hover{background-position:100% 0; box-shadow:0 12px 30px rgba(106,224,255,.35)}
-    .btn:active{ transform: translateY(1px)}
-    .btn:focus{ outline: 2px solid #8af5c2; outline-offset:2px}
-    .btn.alt{background:transparent; color:var(--brand); outline:2px solid var(--brand); box-shadow:none;}
-    .btn.alt:hover{box-shadow:0 8px 24px rgba(106,224,255,.2)}
+    header{position:sticky;top:0;z-index:40;background:rgba(11,16,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .bar{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:calc(env(safe-area-inset-top,0) + 6px) 16px 8px}
+    .logo{font-weight:900;letter-spacing:.2px;display:flex;align-items:center;gap:10px}
+    .logo:before{content:"";width:12px;height:12px;border-radius:50%;background:conic-gradient(from 90deg,#6ae0ff,#8af5c2,#6ae0ff)}
 
-    /* Canva button image */
-    .btn-img{display:inline-block; cursor:pointer; border-radius:999px; box-shadow: var(--shadow)}
+    nav{display:flex;gap:12px;flex-wrap:nowrap}
+    nav .btn{font-size:15px;padding:10px 16px}
+    nav .btn.alt{background:transparent;color:var(--brand);outline:1.5px solid var(--brand)}
 
-    /* Hero */
-    .hero{position:relative; padding: var(--space-xl) 0 var(--space-l)}
-    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap: var(--space-l)}
-    .kicker{letter-spacing:.12em; text-transform:uppercase; color:var(--accent); font-weight:900; font-size:12px}
-    h1{font-size: clamp(28px, 6vw, 56px); line-height:1.1; margin:10px 0}
-    .sub{font-size: clamp(15px, 2.8vw, 20px); color:var(--muted)}
-    .hero-cta{display:flex; gap:var(--space-s); flex-wrap:wrap; margin-top:var(--space-m)}
-    .hero-card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:var(--space-m)}
-    .badge{display:inline-block; padding:6px 10px; border-radius:999px; background:#102143; color:#bfe9ff; font-weight:700; font-size:12px}
-    @media (max-width: 960px){ .hero-grid{ grid-template-columns:1fr } }
+    .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 18px;border-radius:999px;font-weight:900;color:#08101e;
+      background:linear-gradient(135deg,#6ae0ff,#8af5c2,#6ae0ff);background-size:200% 200%;
+      transition:transform .08s ease,box-shadow .2s ease,background-position .4s ease,filter .2s ease;
+      box-shadow:0 0 0 0 rgba(106,224,255,.0),var(--shadow)}
+    .btn:hover{background-position:100% 0;box-shadow:0 0 32px 6px rgba(106,224,255,.25)}
+    .btn:active{transform:translateY(1px)}
+    .btn.alt{background:transparent;color:var(--brand);outline:2px solid var(--brand)}
+    .btn::after{content:"";position:absolute;inset:-6px;border-radius:inherit;box-shadow:0 0 0 0 rgba(106,224,255,0);opacity:0;transition:opacity .2s ease}
+    .btn:hover::after{opacity:.8;animation:pulse 1.8s ease-in-out infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(106,224,255,.20)}50%{box-shadow:0 0 24px 8px rgba(106,224,255,.35)}100%{box-shadow:0 0 0 0 rgba(106,224,255,.20)}}
+    .magnet{display:inline-block;perspective:600px}
 
-    /* Sections */
-    section{padding: var(--space-l) 0}
-    h2{font-size: clamp(22px, 4.5vw, 34px); margin:0 0 var(--space-m)}
-    .grid{display:grid; gap: var(--space-m)}
-    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
-    .grid.cols-2{grid-template-columns: repeat(2, 1fr)}
-    @media (max-width: 960px){ .grid.cols-3, .grid.cols-2{ grid-template-columns:1fr } }
+    .pill{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#0f1730;color:#bfe9ff;font-weight:700;font-size:12px}
 
-    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:var(--space-m)}
-    .feat{display:flex; gap:var(--space-s)}
+    .card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--line);border-radius:14px;padding:18px;overflow:hidden}
+    .card:before{content:"";position:absolute;inset:-1px;z-index:0;border-radius:inherit;
+      background:conic-gradient(from 180deg, transparent 0 20%, rgba(138,245,194,.35) 25%, transparent 30% 70%, rgba(106,224,255,.35) 75%, transparent 80% 100%);
+      filter:blur(10px);opacity:.6}
+    .card>*{position:relative;z-index:1}
 
-    /* Gallery */
-    .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap: var(--space-s)}
-    .gallery img{width:100%; height:auto; border-radius:14px; aspect-ratio: 4 / 3; object-fit:cover}
+    .hero{padding:38px 0 24px}
+    .grid{display:grid;gap:18px}
+    .cols-2{grid-template-columns:1.1fr .9fr}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
 
-    /* Reviews */
-    .reviews .item{display:grid; grid-template-columns:64px 1fr; gap:var(--space-s); align-items:center}
-    .avatar{width:64px; height:64px; border-radius:50%; overflow:hidden; border:1px solid var(--line)}
+    .plans{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .plan .price{font-size:28px;font-weight:900;margin:6px 0 8px}
+    .plan .btn{width:100%}
 
-    /* Form */
-    .form{display:grid; grid-template-columns:1.1fr .9fr; gap: var(--space-m)}
-    form{display:grid; gap: var(--space-s)}
-    input, textarea{padding:14px 16px; border-radius:12px; background:#0f1730; color:#fff; border:1px solid var(--line); outline:none; width:100%}
-    textarea{min-height:120px; resize:vertical}
-    .row{display:flex; gap: var(--space-s); flex-wrap:wrap}
-    .row > input{flex:1 1 240px}
-    .help{font-size:13px; color:var(--muted)}
-    .ok{display:none; margin-top:var(--space-xs); color:#8af5c2; font-weight:700}
-    .err{display:none; margin-top:var(--space-xs); color:#ff6b6b; font-weight:700}
-    @media (max-width: 960px){ .form{ grid-template-columns:1fr } }
+    form{display:grid;gap:10px}
+    input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#0f1730;color:#fff}
+    textarea{min-height:110px}
+    .muted{color:var(--muted);font-size:14px}
 
-    footer{border-top:1px solid var(--line); padding: var(--space-l) 0; color:#a9b8e8; font-size:14px}
-    /* Mobile nav */
-    @media (max-width: 820px){
-      .menu-btn{display:inline-flex}
-      .nav{display:none; position:absolute; left:0; right:0; top:56px; background:rgba(11,16,32,.98); border-bottom:1px solid var(--line); padding: var(--space-m)}
-      .nav.open{display:block}
-      .nav a{display:block; padding:10px 0}
+    .avatar{width:100%;max-width:200px;border-radius:14px;border:1px solid var(--line);display:block}
+    .review{display:grid;gap:10px;grid-template-columns:auto 1fr;align-items:center}
+    .review img{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);object-fit:cover}
+
+    .reveal{opacity:1;transform:none}
+    .reveal.animate{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    footer{border-top:1px solid var(--line);padding:22px 0;margin-top:28px;color:#9fb2e3;font-size:14px}
+
+    @media (max-width:768px){
+      nav{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:6px 0;gap:10px}
+      nav::-webkit-scrollbar{display:none}
+      nav .btn{white-space:nowrap}
+      .logo{font-size:16px}
+      .plans{grid-template-columns:1fr}
+      .cols-2{grid-template-columns:1fr}
     }
+    @media (prefers-reduced-motion:reduce){.reveal.animate{transition:none}.btn{transition:none}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container bar">
-      <div class="logo"><span class="logo-dot"></span> Космос Кода</div>
-      <button class="menu-btn" aria-expanded="false" aria-controls="nav">Меню</button>
-      <nav id="nav" class="nav" aria-label="Навигация">
-        <a class="btn alt" href="#program">Программа</a>
-        <a class="btn alt" href="#portfolio">Работы</a>
-        <a class="btn alt" href="#reviews">Отзывы</a>
-        <a class="btn alt" href="#lead">Контакты</a>
-      </nav>
-      <a class="btn" href="#lead" style="margin-left:auto" data-target="#lead">Записаться</a>
+<canvas id="stars"></canvas>
+<canvas id="fx"></canvas>
+
+<header>
+  <div class="container bar">
+    <div class="logo">Виталий Матвиенко</div>
+    <nav>
+      <a class="btn alt" href="#program">Программа</a>
+      <a class="btn alt" href="#work">Работы</a>
+      <a class="btn alt" href="#reviews">Отзывы</a>
+      <a class="btn" href="#lead">Записаться</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container grid cols-2">
+      <div class="reveal">
+        <span class="pill">срок 1 день</span>
+        <h1>Сайт-визитка под ключ — быстро и ярко</h1>
+        <p class="muted">Кибер-стиль, адаптив, форма → Telegram, публикация на GitHub Pages / Netlify.</p>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <span class="magnet"><a class="btn" href="#lead">Оставить заявку</a></span>
+          <a class="btn alt" href="https://t.me/vellkhem" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
+        <div class="tags">
+          <span class="pill">Адаптив</span><span class="pill">Форма → TG</span><span class="pill">SEO-база</span><span class="pill">Хостинг включён</span>
+        </div>
+      </div>
+      <div class="card tilt reveal">
+        <h2>О преподавателе</h2>
+        <div class="grid" style="grid-template-columns:auto 1fr;gap:16px;align-items:center">
+          <img class="avatar" src="teacher.jpg" alt="Виталий Матвиенко">
+          <div class="muted">
+            Веду за руку от идеи до запуска. Помогу с текстом, подберу визуал (Canva/Photoshop/AI),
+            подключу аналитику и превращу трафик в заявки.
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="kicker">PRO — набор</span>
-          <h1>Веб-разработка с нуля до проекта за 8 недель</h1>
-          <p class="sub">Только практика: адаптивная вёрстка, JavaScript, Git, деплой. Менторство и обратная связь на каждом шаге.</p>
-          <div class="hero-cta">
-            <a class="btn" href="#lead" data-target="#lead">Начать обучение</a>
-            <a class="btn alt" href="https://t.me/MatkosmosBot" target="_blank" rel="noopener">Задать вопрос в боте</a>
-            <!-- Пример кастомной кнопки из Canva -->
-            <img class="btn-img" src="assets/images/btn-kosmos.png" alt="Записаться" data-target="#lead" width="200" height="50">
-          </div>
-          <div class="row" style="margin-top:14px">
-            <span class="badge">8 недель</span>
-            <span class="badge">2 занятия/нед</span>
-            <span class="badge">Сертификат</span>
-            <span class="badge">Портфолио</span>
-          </div>
+  <section id="program" class="reveal">
+    <div class="container">
+      <h2>Что получите</h2>
+      <div class="grid cols-3">
+        <div class="card tilt"><strong>Дизайн & Верстка</strong><p class="muted">Структура 1–5 экранов, аккуратная типографика, неоновая подсветка без перегруза.</p></div>
+        <div class="card tilt"><strong>Заявки</strong><p class="muted">Форма отправляет сразу в Telegram. Можно подключить почту и Метрику/GA4.</p></div>
+        <div class="card tilt"><strong>Публикация</strong><p class="muted">Размещу на GitHub Pages/Netlify/Cloudflare Pages, выдам доступы и инструкцию.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="reveal">
+    <div class="container">
+      <h2>Примеры работ</h2>
+      <div class="grid cols-3">
+        <div class="card tilt"><strong>Лендинг «Космос Кода»</strong><p class="muted">Обучение с квизами, прогрессом и выдачей сертификатов.</p></div>
+        <div class="card tilt"><strong>Сайт-визитка мастера</strong><p class="muted">Мини-портфолио + быстрые контакты → рост заявок на 35%.</p></div>
+        <div class="card tilt"><strong>Мини-магазин</strong><p class="muted">Каталог + заявка → Telegram. Инструкция владельцу по обновлению.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="container">
+      <h2>Тарифы</h2>
+      <div class="plans">
+        <div class="card plan tilt">
+          <strong>Старт</strong><div class="price">4 990 ₽</div>
+          <ul><li>1 экран</li><li>Контакты и кнопки</li><li>Адаптив • 1 правка</li></ul>
+          <a class="btn" href="#lead">Выбрать</a>
         </div>
-        <div class="hero-card">
-          <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&auto=format&fit=crop&w=1600" alt="Работа за ноутбуком" style="border-radius:12px; aspect-ratio:16/10; object-fit:cover" loading="lazy" sizes="(max-width: 960px) 100vw, 50vw"/>
+        <div class="card plan tilt">
+          <strong>Стандарт</strong><div class="price">9 900 ₽</div>
+          <ul><li>3–5 блоков</li><li>Форма → Telegram</li><li>Метрика + публикация</li></ul>
+          <a class="btn" href="#lead">Выбрать</a>
+        </div>
+        <div class="card plan tilt">
+          <strong>Премиум</strong><div class="price">17 900 ₽</div>
+          <ul><li>До 8 блоков + копирайтинг</li><li>TG-уведомления</li><li>7 дней поддержки</li></ul>
+          <a class="btn" href="#lead">Выбрать</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- FEATURES -->
-    <section>
-      <div class="container grid cols-3">
-        <div class="card feat">
+  <section id="reviews" class="reveal">
+    <div class="container">
+      <h2>Отзывы</h2>
+      <div class="card">
+        <div class="review">
+          <img src="review1.jpg" alt="Юлия">
           <div>
-            <strong>Практика с первого занятия</strong>
-            <p class="help">Мини-проекты каждую неделю: визитка, лендинг, калькулятор, игра.</p>
-          </div>
-        </div>
-        <div class="card feat">
-          <div>
-            <strong>Менторство</strong>
-            <p class="help">Личная обратная связь и помощь с трудными местами.</p>
-          </div>
-        </div>
-        <div class="card feat">
-          <div>
-            <strong>Портфолио и сертификат</strong>
-            <p class="help">Готовые работы + сертификат для резюме и LinkedIn.</p>
+            <strong>Юлия</strong>
+            <p class="muted">«С нуля за день собрали визитку, заявки сразу полетели в Telegram. Рекомендую!»</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PROGRAM -->
-    <section id="program">
-      <div class="container">
-        <h2>Программа 8 недель</h2>
-        <div class="grid cols-2">
-          <div class="card">
-            <ol>
-              <li><strong>HTML</strong> — семантика, структура.</li>
-              <li><strong>CSS</strong> — сетки, адаптив, шрифты.</li>
-              <li><strong>JS основы</strong> — DOM, события.</li>
-              <li><strong>Практика</strong> — лендинг с формой.</li>
-            </ol>
-          </div>
-          <div class="card">
-            <ol start="5">
-              <li><strong>JS+</strong> — модули, fetch.</li>
-              <li><strong>Git & GitHub</strong> — коммиты, PR.</li>
-              <li><strong>Деплой</strong> — GitHub Pages / Netlify.</li>
-              <li><strong>Финал</strong> — защита проекта.</li>
-            </ol>
-          </div>
-        </div>
+  <section id="lead" class="reveal">
+    <div class="container grid cols-2">
+      <div class="card tilt">
+        <h2>Оставить заявку</h2>
+        <form id="leadForm" novalidate>
+          <input name="name" placeholder="Ваше имя" required>
+          <input name="contact" placeholder="Телефон или Telegram" required>
+          <textarea name="message" placeholder="Ниша/описание и ссылки на примеры (если есть)"></textarea>
+          <label class="muted"><input type="checkbox" name="consent" required> Согласен на обработку данных</label>
+          <button class="btn" type="submit">Отправить</button>
+          <div id="ok" class="muted" style="display:none">✅ Заявка отправлена. Свяжусь с вами в Telegram.</div>
+          <div id="err" class="muted" style="display:none;color:#ff9a9a">⚠️ Не удалось отправить. Напишите в Telegram.</div>
+        </form>
+        <p class="muted" style="margin-top:8px">Можно и без формы: <a href="https://t.me/vellkhem" target="_blank" rel="noopener">@vellkhem</a> • email: <a href="mailto:matvienko.vitalik@list.ru">matvienko.vitalik@list.ru</a></p>
       </div>
-    </section>
-
-    <!-- PORTFOLIO -->
-    <section id="portfolio">
-      <div class="container">
-        <h2>Реальные примеры работ</h2>
-        <div class="gallery">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&auto=format&fit=crop&w=1600" alt="Лендинг — превью" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&auto=format&fit=crop&w=1600" alt="Код — preview" loading="lazy">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&auto=format&fit=crop&w=1600" alt="Дашборд — preview" loading="lazy">
-        </div>
+      <div class="card tilt">
+        <h2>Почему я</h2>
+        <ul>
+          <li>Понимаю цели бизнеса и упаковываю в понятный лендинг</li>
+          <li>Делаю быстро и довожу до результата</li>
+          <li>Дорабатываю тексты и визуал, чтобы конвертило</li>
+          <li>Простая поддержка: голосом/видео</li>
+        </ul>
       </div>
-    </section>
+    </div>
+  </section>
+</main>
 
-    <!-- INSTRUCTOR -->
-    <section>
-      <div class="container grid cols-2">
-        <div class="card">
-          <h2>Преподаватель</h2>
-          <p><strong>Виталий Матвиенко</strong> — предприниматель и ментор. Помогу собрать портфолио и устроить ваш первый деплой.</p>
-          <div class="row" style="teacher.jpg">
-            <a class="btn alt" href="https://t.me/vellkhem" target="_blank" rel="noopener">Написать в Telegram</a>
-            <a class="btn alt" href="https://t.me/MatkosmosBot" target="_blank" rel="noopener">Открыть бота</a>
-          </div>
-        </div>
-        <div class="card">
-          <img src="assets/images/teacher.jpg" alt="Портрет преподавателя — Виталий Матвиенко" style="border-radius:12px; aspect-ratio:4/3; object-fit:cover" loading="lazy">
-        </div>
-      </div>
-    </section>
+<footer>
+  <div class="container">© 2025 Виталий Матвиенко • Сайт-визитка за 1 день</div>
+</footer>
 
-    <!-- REVIEWS -->
-    <section id="reviews" class="reviews">
-      <div class="container">
-        <h2>Отзывы выпускников</h2>
-        <div class="grid">
-          <div class="card item">
-            <div class="avatar"><img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&auto=format&fit=crop&w=200" alt="Аватар Анны" loading="lazy"></div>
-            <div>
-              <strong>Анна</strong>
-              <p class="help">«С нуля сверстала лендинг и оформила резюме — уже взяли маленький проект на фрилансе!»</p>
-            </div>
-          </div>
-          <div class="card item">
-            <div class="avatar"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&auto=format&fit=crop&w=200" alt="Аватар Юлии" loading="lazy"></div>
-            <div>
-              <strong>Юлия</strong>
-              <p class="help">«Понял JS через практику, деплой на GitHub Pages за вечер — кайф.»</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<script>
+document.querySelectorAll('.reveal').forEach(el=>el.classList.add('animate'));
 
-    <!-- CONTACT / LEAD FORM -->
-    <section id="lead" class="form">
-      <div class="container form">
-        <div>
-          <h2>Оставить заявку</h2>
-          <form id="leadForm" novalidate>
-            <div class="row">
-              <input name="name" placeholder="Ваше имя" required />
-              <input name="contact" placeholder="Телефон или Telegram" required pattern="^[+\\d\\s()-_@A-Za-z]{5,}$" />
-            </div>
-            <textarea name="message" placeholder="Коротко о цели (например: хочу сверстать лендинг для бизнеса)"></textarea>
-            <label class="help"><input type="checkbox" name="consent" required /> Согласен с обработкой данных</label>
-            <div class="row">
-              <button class="btn" type="submit">Отправить</button>
-              <a class="btn alt" href="https://t.me/vellkhem" target="_blank" rel="noopener">Связаться напрямую</a>
-            </div>
-            <div class="ok" id="ok">✅ Заявка отправлена. Свяжусь с вами в Telegram.</div>
-            <div class="err" id="err">⚠️ Не получилось отправить. Попробуйте другой способ связи ниже.</div>
-          </form>
-        </div>
-        <div class="card">
-          <h2>Контакты</h2>
-          <p>Telegram: <a href="https://t.me/vellkhem" target="_blank" rel="noopener">@vellkhem</a></p>
-          <p>Бот: <a href="https://t.me/MatkosmosBot" target="_blank" rel="noopener">@MatkosmosBot</a></p>
-          <p>Email: <a href="mailto:matvienko.vitalik@list.ru">matvienko.vitalik@list.ru</a></p>
-        </div>
-      </div>
-    </section>
-  </main>
+const cvs=document.getElementById('stars');const ctx=cvs.getContext('2d');
+let w,h,stars=[];const N=80;let raf;
+function sResize(){w=innerWidth;h=innerHeight;cvs.width=w;cvs.height=h}
+function sInit(){stars=Array.from({length:N},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random()*0.7+0.3,s:Math.random()*1.2+0.3}))}
+function sTick(){ctx.clearRect(0,0,w,h);ctx.fillStyle='#aee9ff';
+  for(const st of stars){st.y+=st.s;if(st.y>h)st.y=0;ctx.globalAlpha=st.z;ctx.fillRect(st.x,st.y,st.z*1.8,st.z*1.8)}
+  raf=requestAnimationFrame(sTick)}
+sResize();sInit();sTick();
+addEventListener('resize',()=>{sResize();sInit()});
+addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else sTick()});
 
-  <footer>
-    <div class="container">© 2025 Космос Кода • Сделано с любовью к чистому коду</div>
-  </footer>
+const fx=document.getElementById('fx');const fxc=fx.getContext('2d');
+let mxRunning=false,mxStopTimeout=null;
+function matrixStart(){
+  mxRunning=true;clearTimeout(mxStopTimeout);
+  fx.width=innerWidth;fx.height=innerHeight;
+  const fontSize=16*(devicePixelRatio||1), columns=Math.floor(fx.width/fontSize), drops=Array(columns).fill(0);
+  const glyphs='アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$#░▒▓';
+  (function draw(){
+    if(!mxRunning)return;
+    fxc.fillStyle='rgba(11,16,32,0.08)';fxc.fillRect(0,0,fx.width,fx.height);
+    fxc.fillStyle='#6ae0ff';fxc.font=fontSize+'px monospace';
+    for(let i=0;i<drops.length;i++){const ch=glyphs[Math.floor(Math.random()*glyphs.length)];
+      fxc.fillText(ch,i*fontSize,drops[i]*fontSize);
+      if(drops[i]*fontSize>fx.height&&Math.random()>0.975)drops[i]=0;drops[i]++;}
+    requestAnimationFrame(draw);
+  })();
+  mxStopTimeout=setTimeout(()=>{mxRunning=false;fxc.clearRect(0,0,fx.width,fx.height)},6000);
+}
+document.querySelector('.hero').addEventListener('click',matrixStart);
 
-  <script>
-    // Mobile menu toggle
-    const btnMenu = document.querySelector('.menu-btn');
-    const nav = document.getElementById('nav');
-    btnMenu?.addEventListener('click', ()=>{
-      const open = nav.classList.toggle('open');
-      btnMenu.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+for(const wrap of document.querySelectorAll('.magnet')){
+  const btn=wrap.querySelector('.btn');
+  wrap.addEventListener('mousemove',(e)=>{const r=wrap.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)/r.width;const y=(e.clientY-r.top-r.height/2)/r.height;
+    btn.style.transform=`translate(${x*10}px, ${y*8}px)`;});
+  wrap.addEventListener('mouseleave',()=>{btn.style.transform='';});
+}
+if(matchMedia('(pointer:coarse)').matches){
+  document.querySelectorAll('.magnet').forEach(el=>{
+    const btn=el.querySelector('.btn');if(btn)btn.style.transform='';el.classList.remove('magnet');
+  });
+}
 
-    // Canva image buttons
-    document.querySelectorAll('.btn-img').forEach(img=>{
-      img.addEventListener('click', ()=>{
-        const target = img.getAttribute('data-target');
-        if (target) document.querySelector(target)?.scrollIntoView({behavior:'smooth'});
+if(matchMedia('(pointer:fine)').matches){
+  for(const card of document.querySelectorAll('.tilt')){
+    card.addEventListener('mousemove',(e)=>{const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`rotateY(${x*8}deg) rotateX(${-y*8}deg)`;});
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  }
+}
+
+const io=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.15});
+for(const el of document.querySelectorAll('.reveal')) io.observe(el);
+
+(function(){
+  const TOKEN='7608065065:AAG-K5pLNSFH8DVwdKvD9AxaCAvZfSsON9c';
+  const CHATID=465087814;
+  const form=document.getElementById('leadForm'); if(!form) return;
+  const ok=document.getElementById('ok'),err=document.getElementById('err');
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    const fd=new FormData(form);const p=Object.fromEntries(fd.entries());
+    if(!p.name||!p.contact||!p.consent){if(err)err.style.display='block';return;}
+    const text='📝 Новая заявка\n' + `Имя: ${p.name}\n` + `Контакт: ${p.contact}` + (p.message?`\nСообщение: ${p.message}`:'');
+    const btn=form.querySelector('button[type="submit"]'); if(btn){btn.disabled=true;btn.style.opacity=.7;}
+    try{
+      const resp=await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({chat_id:CHATID,text})
       });
-    });
-
-    // Anchor buttons with data-target
-    document.querySelectorAll('.btn[data-target]').forEach(b=>{
-      b.addEventListener('click', (e)=>{
-        const t = b.getAttribute('data-target');
-        if (t){ e.preventDefault(); document.querySelector(t)?.scrollIntoView({behavior:'smooth'}); }
-      });
-    });
-
-    // Lead form submit (пока что заглушка)
-    document.getElementById('leadForm').addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const form = e.currentTarget;
-      const fd = new FormData(form);
-      const payload = Object.fromEntries(fd.entries());
-      if (!payload.name || !payload.contact || !payload.consent){
-        document.getElementById('err').style.display='block'; return;
-      }
-      form.reset(); document.getElementById('ok').style.display='block';
-    });
-  </script>
+      if(!resp.ok) throw new Error('telegram_error');
+      form.reset(); if(ok){ok.style.display='block'; setTimeout(()=>ok.style.display='none',4000);}
+    }catch(e){
+      if(err){err.style.display='block'; setTimeout(()=>err.style.display='none',5000);}
+      console.error(e);
+    }finally{ if(btn){btn.disabled=false;btn.style.opacity=1;} }
+  });
+})();
+</script>
 </body>
 </html>
