@@ -3,90 +3,139 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Сайт-визитка за 1 день — Виталий Матвиенко</title>
-  <meta name="description" content="Сделаю сайт-визитку за 1 день: кибер-дизайн, адаптив, форма с отправкой в Telegram. Публикация на GitHub Pages/Netlify."/>
+  <title>Сайт за 24 часа — Виталий Матвиенко</title>
+  <meta name="description" content="Сайт-визитка за 24 часа. Адаптив, заявки в Telegram, публикация — всё включено. Без задержек.">
   <style>
     :root{
-      --bg:#0b1020;--bg2:#0f1730;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);
-      --text:#e7ecff;--muted:#a7b6e6;--brand:#6ae0ff;--accent:#8af5c2;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,.35)
+      --bg:#0a0b15;
+      --bg2:#0d1022;
+      --card:rgba(15,20,40,.5);
+      --line:rgba(138,245,194,.12);
+      --text:#f2f8ff;
+      --muted:#a0b8e0;
+      --brand:#6ae0ff;
+      --accent:#8af5c2;
+      --radius:16px;
     }
-    *{box-sizing:border-box}
+    *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:radial-gradient(1200px 700px at 70% -10%,rgba(106,224,255,.08),transparent 60%),var(--bg);
-      color:var(--text);line-height:1.55;overflow-x:hidden}
-    .container{max-width:1100px;margin:0 auto;padding:0 18px}
-    a{color:var(--brand);text-decoration:none}
-    h1{font-size:clamp(34px,6vw,56px);line-height:1.08;margin:8px 0}
-    h2{font-size:clamp(22px,4vw,32px);margin:0 0 10px}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(700px 400px at 90% 0%, rgba(106,224,255,.04), transparent 60%),
+        radial-gradient(500px 300px at 10% 100%, rgba(138,245,194,.03), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+    .container{max-width:980px;margin:0 auto;padding:0 20px}
+
+    a{color:var(--brand);text-decoration:none;cursor:pointer}
+    h1{font-size:clamp(36px,8vw,58px);font-weight:900;line-height:1.05;margin:0 0 16px}
+    h2{font-size:clamp(26px,6vw,38px);font-weight:800;margin:0 0 20px;color:#fff}
     p{margin:0}
 
-    #stars,#fx{position:fixed;inset:0;z-index:-1;pointer-events:none}
+    #stars, #fx{position:fixed;inset:0;z-index:-2;pointer-events:none}
 
-    header{position:sticky;top:0;z-index:40;background:rgba(11,16,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    .bar{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:calc(env(safe-area-inset-top,0) + 6px) 16px 8px}
-    .logo{font-weight:900;letter-spacing:.2px;display:flex;align-items:center;gap:10px}
-    .logo:before{content:"";width:12px;height:12px;border-radius:50%;background:conic-gradient(from 90deg,#6ae0ff,#8af5c2,#6ae0ff)}
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(10,11,21,.85);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(138,245,194,.1);
+    }
+    .bar{
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:60px;
+    }
+    .logo{
+      display:flex;align-items:center;gap:12px;
+    }
+    .logo-img{
+      width:34px;height:34px;border-radius:50%;object-fit:cover;
+      border:2px solid var(--accent);
+    }
 
-    nav{display:flex;gap:12px;flex-wrap:nowrap}
-    nav .btn{font-size:15px;padding:10px 16px}
-    nav .btn.alt{background:transparent;color:var(--brand);outline:1.5px solid var(--brand)}
+    nav{display:flex;gap:12px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 20px;border-radius:999px;font-weight:900;
+      text-transform:uppercase;letter-spacing:0.8px;font-size:14px;
+      cursor:pointer;text-decoration:none;white-space:nowrap;
+      transition:transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease;
+    }
+    .btn.primary{
+      background:linear-gradient(135deg, #6ae0ff, #8af5c2);
+      color:#000;
+      box-shadow:0 6px 18px rgba(106,224,255,.25);
+    }
+    .btn.primary:hover{
+      transform:translateY(-3px);
+      box-shadow:0 8px 24px rgba(106,224,255,.4), 0 0 16px rgba(138,245,194,.25);
+    }
+    .btn.outline{
+      background:transparent;color:var(--brand);border:2px solid var(--brand);
+    }
+    .btn.outline:hover{
+      background:rgba(106,224,255,.06);
+      transform:translateY(-2px);
+    }
 
-    .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:12px 18px;border-radius:999px;font-weight:900;color:#08101e;
-      background:linear-gradient(135deg,#6ae0ff,#8af5c2,#6ae0ff);background-size:200% 200%;
-      transition:transform .08s ease,box-shadow .2s ease,background-position .4s ease,filter .2s ease;
-      box-shadow:0 0 0 0 rgba(106,224,255,.0),var(--shadow)}
-    .btn:hover{background-position:100% 0;box-shadow:0 0 32px 6px rgba(106,224,255,.25)}
-    .btn:active{transform:translateY(1px)}
-    .btn.alt{background:transparent;color:var(--brand);outline:2px solid var(--brand)}
-    .btn::after{content:"";position:absolute;inset:-6px;border-radius:inherit;box-shadow:0 0 0 0 rgba(106,224,255,0);opacity:0;transition:opacity .2s ease}
-    .btn:hover::after{opacity:.8;animation:pulse 1.8s ease-in-out infinite}
-    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(106,224,255,.20)}50%{box-shadow:0 0 24px 8px rgba(106,224,255,.35)}100%{box-shadow:0 0 0 0 rgba(106,224,255,.20)}}
-    .magnet{display:inline-block;perspective:600px}
+    .hero{padding:50px 0 40px;position:relative;z-index:1}
+    .grid{display:grid;gap:28px}
+    .cols-2{grid-template-columns:1fr 1fr}
 
-    .pill{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:#0f1730;color:#bfe9ff;font-weight:700;font-size:12px}
+    .card{
+      background:var(--bg2);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:24px;
+      position:relative;
+    }
+    .card::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg, transparent, var(--accent), var(--brand), transparent);
+    }
 
-    .card{position:relative;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
-      border:1px solid var(--line);border-radius:14px;padding:18px;overflow:hidden}
-    .card:before{content:"";position:absolute;inset:-1px;z-index:0;border-radius:inherit;
-      background:conic-gradient(from 180deg, transparent 0 20%, rgba(138,245,194,.35) 25%, transparent 30% 70%, rgba(106,224,255,.35) 75%, transparent 80% 100%);
-      filter:blur(10px);opacity:.6}
-    .card>*{position:relative;z-index:1}
+    .tag{
+      display:inline-block;padding:4px 12px;border-radius:999px;
+      background:rgba(138,245,194,.1);color:#cfffe0;font-size:12px;font-weight:700;
+      margin-right:8px;margin-bottom:8px;
+    }
 
-    .hero{padding:38px 0 24px}
-    .grid{display:grid;gap:18px}
-    .cols-2{grid-template-columns:1.1fr .9fr}
-    .cols-3{grid-template-columns:repeat(3,1fr)}
+    .plans{
+      display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    }
+    .price{
+      font-size:28px;font-weight:900;margin:8px 0;
+      background:linear-gradient(90deg, var(--brand), var(--accent));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
 
-    .plans{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
-    .plan .price{font-size:28px;font-weight:900;margin:6px 0 8px}
-    .plan .btn{width:100%}
+    form{display:grid;gap:14px}
+    input,textarea{
+      width:100%;padding:14px 16px;border-radius:12px;
+      border:1px solid rgba(138,245,194,.15);
+      background:rgba(10,11,21,.6);color:#fff;font-size:16px;
+    }
+    textarea{min-height:100px}
 
-    form{display:grid;gap:10px}
-    input,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--line);background:#0f1730;color:#fff}
-    textarea{min-height:110px}
-    .muted{color:var(--muted);font-size:14px}
+    .avatar{width:100%;max-width:180px;border-radius:14px;border:1px solid var(--line);}
+    .review{display:grid;gap:12px;grid-template-columns:auto 1fr;align-items:center;}
+    .review img{width:56px;height:56px;border-radius:50%;border:2px solid var(--accent);object-fit:cover;}
 
-    .avatar{width:100%;max-width:200px;border-radius:14px;border:1px solid var(--line);display:block}
-    .review{display:grid;gap:10px;grid-template-columns:auto 1fr;align-items:center}
-    .review img{width:52px;height:52px;border-radius:50%;border:1px solid var(--line);object-fit:cover}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.8,.4,1);}
+    .reveal.in{opacity:1;transform:translateY(0);}
 
-    .reveal{opacity:1;transform:none}
-    .reveal.animate{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
-    .reveal.in{opacity:1;transform:none}
-
-    footer{border-top:1px solid var(--line);padding:22px 0;margin-top:28px;color:#9fb2e3;font-size:14px}
+    footer{border-top:1px solid rgba(138,245,194,.1);padding:24px 0;margin-top:30px;text-align:center;color:var(--muted);font-size:14px}
 
     @media (max-width:768px){
-      nav{overflow-x:auto;-webkit-overflow-scrolling:touch;padding:6px 0;gap:10px}
-      nav::-webkit-scrollbar{display:none}
-      nav .btn{white-space:nowrap}
-      .logo{font-size:16px}
-      .plans{grid-template-columns:1fr}
       .cols-2{grid-template-columns:1fr}
+      nav{gap:8px}
+      .btn{font-size:13px;padding:10px 16px}
+      h1{font-size:clamp(32px,8vw,44px)}
+      .hero{padding:30px 0 20px}
     }
-    @media (prefers-reduced-motion:reduce){.reveal.animate{transition:none}.btn{transition:none}}
   </style>
 </head>
 <body>
@@ -95,12 +144,13 @@
 
 <header>
   <div class="container bar">
-    <div class="logo">Виталий Матвиенко</div>
+    <a href="#" class="logo">
+      <img src="teacher.jpg" alt="Виталий" class="logo-img">
+    </a>
     <nav>
-      <a class="btn alt" href="#program">Программа</a>
-      <a class="btn alt" href="#work">Работы</a>
-      <a class="btn alt" href="#reviews">Отзывы</a>
-      <a class="btn" href="#lead">Записаться</a>
+      <a class="btn outline" href="#work">Работы</a>
+      <a class="btn outline" href="#reviews">Отзывы</a>
+      <a class="btn primary" href="#lead">Записаться</a>
     </nav>
   </div>
 </header>
@@ -109,205 +159,220 @@
   <section class="hero">
     <div class="container grid cols-2">
       <div class="reveal">
-        <span class="pill">срок 1 день</span>
-        <h1>Сайт-визитка под ключ — быстро и ярко</h1>
-        <p class="muted">Кибер-стиль, адаптив, форма → Telegram, публикация на GitHub Pages / Netlify.</p>
-        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-          <span class="magnet"><a class="btn" href="#lead">Оставить заявку</a></span>
-          <a class="btn alt" href="https://t.me/vellkhem" target="_blank" rel="noopener">Написать в Telegram</a>
+        <div class="tag">🔥 За 24 часа</div>
+        <h1>Сайт за 24 часа — который начинает приносить клиентов с первого дня.</h1>
+        <p>Адаптив. Заявки в Telegram. Публикация — всё включено. Без задержек.</p>
+        <div style="margin:20px 0 16px;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn primary" href="#lead">Оставить заявку</a>
+          <a class="btn outline" href="https://t.me/vellkhem" target="_blank">Telegram</a>
         </div>
-        <div class="tags">
-          <span class="pill">Адаптив</span><span class="pill">Форма → TG</span><span class="pill">SEO-база</span><span class="pill">Хостинг включён</span>
+        <div>
+          <span class="tag">📱 Адаптив</span>
+          <span class="tag">📨 Заявки в TG</span>
+          <span class="tag">🚀 Готов за день</span>
         </div>
       </div>
-      <div class="card tilt reveal">
-        <h2>О преподавателе</h2>
-        <div class="grid" style="grid-template-columns:auto 1fr;gap:16px;align-items:center">
-          <img class="avatar" src="teacher.jpg" alt="Виталий Матвиенко">
-          <div class="muted">
-            Веду за руку от идеи до запуска. Помогу с текстом, подберу визуал (Canva/Photoshop/AI),
-            подключу аналитику и превращу трафик в заявки.
-          </div>
-        </div>
+      <div class="card reveal">
+        <img class="avatar" src="teacher.jpg" alt="Виталий">
+        <p style="margin-top:16px;font-size:15px">
+          Делаю сайты, которые <strong>работают</strong>. Не просто красиво — а чтобы звонили.
+          Помогу с текстом, дизайном и запуском — от идеи до первых заявок.
+        </p>
       </div>
     </div>
   </section>
 
-  <section id="program" class="reveal">
+  <section id="work" class="reveal" style="padding:50px 0">
     <div class="container">
-      <h2>Что получите</h2>
-      <div class="grid cols-3">
-        <div class="card tilt"><strong>Дизайн & Верстка</strong><p class="muted">Структура 1–5 экранов, аккуратная типографика, неоновая подсветка без перегруза.</p></div>
-        <div class="card tilt"><strong>Заявки</strong><p class="muted">Форма отправляет сразу в Telegram. Можно подключить почту и Метрику/GA4.</p></div>
-        <div class="card tilt"><strong>Публикация</strong><p class="muted">Размещу на GitHub Pages/Netlify/Cloudflare Pages, выдам доступы и инструкцию.</p></div>
+      <h2>Работы, которые продают</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <strong>Лендинг для коуча</strong>
+          <p class="muted" style="margin-top:10px">Заявки выросли на 40% за неделю. Просто, чётко, без «вау-эффектов».</p>
+        </div>
+        <div class="card">
+          <strong>Сайт мастера маникюра</strong>
+          <p class="muted" style="margin-top:10px">Портфолио + кнопка «записаться» → Telegram. Новые клиенты каждый день.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="work" class="reveal">
-    <div class="container">
-      <h2>Примеры работ</h2>
-      <div class="grid cols-3">
-        <div class="card tilt"><strong>Лендинг «Космос Кода»</strong><p class="muted">Обучение с квизами, прогрессом и выдачей сертификатов.</p></div>
-        <div class="card tilt"><strong>Сайт-визитка мастера</strong><p class="muted">Мини-портфолио + быстрые контакты → рост заявок на 35%.</p></div>
-        <div class="card tilt"><strong>Мини-магазин</strong><p class="muted">Каталог + заявка → Telegram. Инструкция владельцу по обновлению.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal">
+  <section class="reveal" style="padding:50px 0;background:rgba(10,11,21,.4)">
     <div class="container">
       <h2>Тарифы</h2>
       <div class="plans">
-        <div class="card plan tilt">
-          <strong>Старт</strong><div class="price">4 990 ₽</div>
-          <ul><li>1 экран</li><li>Контакты и кнопки</li><li>Адаптив • 1 правка</li></ul>
-          <a class="btn" href="#lead">Выбрать</a>
+        <div class="card">
+          <strong>Старт</strong>
+          <div class="price">4 990 ₽</div>
+          <p>1 экран • контакты • адаптив</p>
+          <a class="btn outline" href="#lead" style="width:100%;margin-top:14px">Выбрать</a>
         </div>
-        <div class="card plan tilt">
-          <strong>Стандарт</strong><div class="price">9 900 ₽</div>
-          <ul><li>3–5 блоков</li><li>Форма → Telegram</li><li>Метрика + публикация</li></ul>
-          <a class="btn" href="#lead">Выбрать</a>
-        </div>
-        <div class="card plan tilt">
-          <strong>Премиум</strong><div class="price">17 900 ₽</div>
-          <ul><li>До 8 блоков + копирайтинг</li><li>TG-уведомления</li><li>7 дней поддержки</li></ul>
-          <a class="btn" href="#lead">Выбрать</a>
+        <div class="card" style="border-color:var(--brand);box-shadow:0 0 20px rgba(106,224,255,.15)">
+          <strong>Стандарт</strong>
+          <div class="price">9 900 ₽</div>
+          <p>3–5 блоков • форма → Telegram • публикация</p>
+          <a class="btn primary" href="#lead" style="width:100%;margin-top:14px">Выбрать</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="reviews" class="reveal">
+  <section id="reviews" class="reveal" style="padding:50px 0">
     <div class="container">
       <h2>Отзывы</h2>
       <div class="card">
         <div class="review">
-          <img src="review1.jpg" alt="Юлия">
+          <img src="julia.jpg" alt="Юлия">
           <div>
-            <strong>Юлия</strong>
-            <p class="muted">«С нуля за день собрали визитку, заявки сразу полетели в Telegram. Рекомендую!»</p>
+            <strong>Юлия, коуч</strong>
+            <p class="muted">«С нуля за день собрали визитку. Заявки сразу полетели в Telegram. Рекомендую!»</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="lead" class="reveal">
-    <div class="container grid cols-2">
-      <div class="card tilt">
-        <h2>Оставить заявку</h2>
-        <form id="leadForm" novalidate>
-          <input name="name" placeholder="Ваше имя" required>
-          <input name="contact" placeholder="Телефон или Telegram" required>
-          <textarea name="message" placeholder="Ниша/описание и ссылки на примеры (если есть)"></textarea>
-          <label class="muted"><input type="checkbox" name="consent" required> Согласен на обработку данных</label>
-          <button class="btn" type="submit">Отправить</button>
-          <div id="ok" class="muted" style="display:none">✅ Заявка отправлена. Свяжусь с вами в Telegram.</div>
-          <div id="err" class="muted" style="display:none;color:#ff9a9a">⚠️ Не удалось отправить. Напишите в Telegram.</div>
+  <section id="lead" class="reveal" style="padding:50px 0">
+    <div class="container">
+      <div class="card" style="max-width:600px;margin:0 auto">
+        <h2 style="text-align:center">Готов начать?</h2>
+        <form id="leadForm" style="margin-top:20px">
+          <input name="name" placeholder="Имя" required>
+          <input name="contact" placeholder="Telegram или телефон" required>
+          <textarea name="message" placeholder="Кратко: что нужно?"></textarea>
+          <label style="display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:var(--muted)">
+            <input type="checkbox" name="consent" required> Согласен на обработку данных
+          </label>
+          <button class="btn primary" type="submit" style="width:100%">Отправить</button>
+          <div id="ok" style="display:none;margin-top:12px;color:var(--accent);font-size:14px">✅ Заявка отправлена!</div>
+          <div id="err" style="display:none;margin-top:12px;color:#ff7a7a;font-size:14px">⚠️ Ошибка. Пишите в Telegram.</div>
         </form>
-        <p class="muted" style="margin-top:8px">Можно и без формы: <a href="https://t.me/vellkhem" target="_blank" rel="noopener">@vellkhem</a> • email: <a href="mailto:matvienko.vitalik@list.ru">matvienko.vitalik@list.ru</a></p>
-      </div>
-      <div class="card tilt">
-        <h2>Почему я</h2>
-        <ul>
-          <li>Понимаю цели бизнеса и упаковываю в понятный лендинг</li>
-          <li>Делаю быстро и довожу до результата</li>
-          <li>Дорабатываю тексты и визуал, чтобы конвертило</li>
-          <li>Простая поддержка: голосом/видео</li>
-        </ul>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="container">© 2025 Виталий Матвиенко • Сайт-визитка за 1 день</div>
+  <div class="container">
+    © 2025 Виталий Матвиенко
+  </div>
 </footer>
 
 <script>
-document.querySelectorAll('.reveal').forEach(el=>el.classList.add('animate'));
-
-const cvs=document.getElementById('stars');const ctx=cvs.getContext('2d');
-let w,h,stars=[];const N=80;let raf;
-function sResize(){w=innerWidth;h=innerHeight;cvs.width=w;cvs.height=h}
-function sInit(){stars=Array.from({length:N},()=>({x:Math.random()*w,y:Math.random()*h,z:Math.random()*0.7+0.3,s:Math.random()*1.2+0.3}))}
-function sTick(){ctx.clearRect(0,0,w,h);ctx.fillStyle='#aee9ff';
-  for(const st of stars){st.y+=st.s;if(st.y>h)st.y=0;ctx.globalAlpha=st.z;ctx.fillRect(st.x,st.y,st.z*1.8,st.z*1.8)}
-  raf=requestAnimationFrame(sTick)}
-sResize();sInit();sTick();
-addEventListener('resize',()=>{sResize();sInit()});
-addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else sTick()});
-
-const fx=document.getElementById('fx');const fxc=fx.getContext('2d');
-let mxRunning=false,mxStopTimeout=null;
-function matrixStart(){
-  mxRunning=true;clearTimeout(mxStopTimeout);
-  fx.width=innerWidth;fx.height=innerHeight;
-  const fontSize=16*(devicePixelRatio||1), columns=Math.floor(fx.width/fontSize), drops=Array(columns).fill(0);
-  const glyphs='アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$#░▒▓';
-  (function draw(){
-    if(!mxRunning)return;
-    fxc.fillStyle='rgba(11,16,32,0.08)';fxc.fillRect(0,0,fx.width,fx.height);
-    fxc.fillStyle='#6ae0ff';fxc.font=fontSize+'px monospace';
-    for(let i=0;i<drops.length;i++){const ch=glyphs[Math.floor(Math.random()*glyphs.length)];
-      fxc.fillText(ch,i*fontSize,drops[i]*fontSize);
-      if(drops[i]*fontSize>fx.height&&Math.random()>0.975)drops[i]=0;drops[i]++;}
-    requestAnimationFrame(draw);
-  })();
-  mxStopTimeout=setTimeout(()=>{mxRunning=false;fxc.clearRect(0,0,fx.width,fx.height)},6000);
+// Звёзды
+const cvs = document.getElementById('stars');
+const ctx = cvs.getContext('2d');
+let w, h, stars = []; const N = 100;
+function sResize(){ w = innerWidth; h = innerHeight; cvs.width = w; cvs.height = h; }
+function sInit(){
+  stars = Array.from({length:N}, () => ({
+    x: Math.random()*w, y: Math.random()*h, z: Math.random()*0.8+0.2, s: Math.random()*1.2+0.3
+  }));
 }
-document.querySelector('.hero').addEventListener('click',matrixStart);
-
-for(const wrap of document.querySelectorAll('.magnet')){
-  const btn=wrap.querySelector('.btn');
-  wrap.addEventListener('mousemove',(e)=>{const r=wrap.getBoundingClientRect();
-    const x=(e.clientX-r.left-r.width/2)/r.width;const y=(e.clientY-r.top-r.height/2)/r.height;
-    btn.style.transform=`translate(${x*10}px, ${y*8}px)`;});
-  wrap.addEventListener('mouseleave',()=>{btn.style.transform='';});
-}
-if(matchMedia('(pointer:coarse)').matches){
-  document.querySelectorAll('.magnet').forEach(el=>{
-    const btn=el.querySelector('.btn');if(btn)btn.style.transform='';el.classList.remove('magnet');
-  });
-}
-
-if(matchMedia('(pointer:fine)').matches){
-  for(const card of document.querySelectorAll('.tilt')){
-    card.addEventListener('mousemove',(e)=>{const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;
-      card.style.transform=`rotateY(${x*8}deg) rotateX(${-y*8}deg)`;});
-    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+function sTick(){
+  ctx.clearRect(0,0,w,h);
+  for(const st of stars){
+    st.y += st.s * 0.7;
+    if(st.y > h) st.y = 0;
+    ctx.globalAlpha = st.z;
+    ctx.fillStyle = st.z > 0.6 ? '#8af5c2' : '#6ae0ff';
+    ctx.beginPath(); ctx.arc(st.x, st.y, st.z*1.1, 0, Math.PI*2); ctx.fill();
   }
+  requestAnimationFrame(sTick);
 }
+sResize(); sInit(); sTick();
+window.addEventListener('resize', sResize);
 
-const io=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.15});
-for(const el of document.querySelectorAll('.reveal')) io.observe(el);
+// Матрица по клику в hero
+const fx = document.getElementById('fx');
+const fxc = fx.getContext('2d');
+let mxRunning = false;
 
-(function(){
-  const TOKEN='7608065065:AAG-K5pLNSFH8DVwdKvD9AxaCAvZfSsON9c';
-  const CHATID=465087814;
-  const form=document.getElementById('leadForm'); if(!form) return;
-  const ok=document.getElementById('ok'),err=document.getElementById('err');
-  form.addEventListener('submit',async(e)=>{
-    e.preventDefault();
-    const fd=new FormData(form);const p=Object.fromEntries(fd.entries());
-    if(!p.name||!p.contact||!p.consent){if(err)err.style.display='block';return;}
-    const text='📝 Новая заявка\n' + `Имя: ${p.name}\n` + `Контакт: ${p.contact}` + (p.message?`\nСообщение: ${p.message}`:'');
-    const btn=form.querySelector('button[type="submit"]'); if(btn){btn.disabled=true;btn.style.opacity=.7;}
-    try{
-      const resp=await fetch(`https://api.telegram.org/bot${TOKEN}/sendMessage`,{
-        method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({chat_id:CHATID,text})
-      });
-      if(!resp.ok) throw new Error('telegram_error');
-      form.reset(); if(ok){ok.style.display='block'; setTimeout(()=>ok.style.display='none',4000);}
-    }catch(e){
-      if(err){err.style.display='block'; setTimeout(()=>err.style.display='none',5000);}
-      console.error(e);
-    }finally{ if(btn){btn.disabled=false;btn.style.opacity=1;} }
-  });
-})();
+document.querySelector('.hero').addEventListener('click', () => {
+  if (mxRunning) return;
+  mxRunning = true;
+  
+  fx.width = innerWidth;
+  fx.height = innerHeight;
+  
+  const fontSize = 14;
+  const cols = Math.floor(fx.width / fontSize);
+  const drops = Array(cols).fill(0);
+  const glyphs = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$#░▒▓';
+  
+  const draw = () => {
+    fxc.fillStyle = 'rgba(10,11,21,0.07)';
+    fxc.fillRect(0, 0, fx.width, fx.height);
+    fxc.fillStyle = '#6ae0ff';
+    fxc.font = `${fontSize}px monospace`;
+    
+    for (let i = 0; i < cols; i++) {
+      const char = glyphs[Math.floor(Math.random() * glyphs.length)];
+      fxc.fillText(char, i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > fx.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+    
+    if (mxRunning) requestAnimationFrame(draw);
+  };
+  
+  draw();
+  setTimeout(() => {
+    mxRunning = false;
+    fxc.clearRect(0, 0, fx.width, fx.height);
+  }, 5000);
+});
+
+// Появление секций
+const obs = new IntersectionObserver(e => e.forEach(el => el.isIntersecting && el.target.classList.add('in')), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Звук при нажатии
+function playClick() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.frequency.value = 300; g.gain.value = 0.04;
+    o.start(); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    o.stop(ctx.currentTime + 0.12);
+  } catch(e){}
+}
+document.querySelectorAll('.btn, button').forEach(b => b.addEventListener('click', playClick));
+
+// Отправка формы в Telegram (исправлено: убран пробел в URL)
+document.getElementById('leadForm')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const p = Object.fromEntries(fd.entries());
+  if(!p.name || !p.contact || !p.consent) return;
+  
+  const text = `📝 Заявка\nИмя: ${p.name}\nКонтакт: ${p.contact}` + (p.message ? `\nСообщение: ${p.message}` : '');
+  const btn = e.target.querySelector('button');
+  const ok = document.getElementById('ok'), err = document.getElementById('err');
+  
+  btn.disabled = true; btn.textContent = 'Отправляю...';
+  
+  try {
+    // ВАЖНО: здесь исправлено — нет пробела между 'bot' и токеном
+    const r = await fetch(`https://api.telegram.org/bot7608065065:AAG-K5pLNSFH8DVwdKvD9AxaCAvZfSsON9c/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({chat_id: 465087814, text})
+    });
+    if(r.ok) {
+      e.target.reset();
+      ok.style.display = 'block'; setTimeout(() => ok.style.display = 'none', 3000);
+    } else throw new Error();
+  } catch {
+    err.style.display = 'block'; setTimeout(() => err.style.display = 'none', 4000);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Отправить';
+  }
+});
 </script>
 </body>
 </html>
